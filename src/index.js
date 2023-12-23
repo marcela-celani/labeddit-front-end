@@ -18,12 +18,12 @@ const GlobalStyle = createGlobalStyle`
 font-family: 'IBM Plex Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #5d5d5d;
+  background-color: #ffffff;
 }
 
 `;
 
-//font-family: 'Noto Sans', sans-serif;
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

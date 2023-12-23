@@ -9,26 +9,25 @@ import CommentsPage from "./pages/comments/CommentsPage";
 
 const App = () => {
 
-  // const [tela, setTela] = useState('login')
+  const [tela, setTela] = useState('login')
 
-  // const renderizarTela = () => {
-  //   if (tela === 'login'){
-  //     return <LoginPage tela={tela} setTela={setTela}/>
-  //   } else if (tela === 'signup') {
-  //     return <SignupPage tela={tela} setTela={setTela}/>
-  //   } else if (tela === 'feed') {
-  //     return <FeedPage tela={tela} setTela={setTela}/>
-  //   } else if (tela === 'comments') {
-  //       return <CommentsPage tela={tela} setTela={setTela}/>
-  //   } else {
-  //     console.log('Página de erro')
-  //   }
-  // }
+  const renderizarTela = () => {
+    if (tela === 'login'){
+      return <LoginPage tela={tela} setTela={setTela}/>
+    } else if (tela === 'signup') {
+      return <SignupPage tela={tela} setTela={setTela}/>
+    } else if (tela === 'feed') {
+      return <FeedPage tela={tela} setTela={setTela}/>
+    } else if (tela === 'comments') {
+        return <CommentsPage tela={tela} setTela={setTela}/>
+    } else {
+      console.log('Página de erro')
+    }
+  }
 
   return (
     <div>
-      {/* {renderizarTela()} */}
-      <h1>hello world</h1>
+      {renderizarTela()}
     </div>
   );
 }
