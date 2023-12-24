@@ -1,8 +1,20 @@
 import React from 'react'
 import logo from '../../assets/logo.svg'
 import { Button, Container, ContainerLogo, Form } from './LoginStyle'
+import { useNavigate } from 'react-router-dom'
+import { goToFeed } from '../../routes/Coordinator'
 
 const LoginPage = () => {
+
+    const navigate = useNavigate()
+  
+    const onSubmitForm = (e) => {
+        e.preventDefault()
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        goToFeed(navigate)
+    }
+
   return (
     <>
       <Container>
@@ -15,13 +27,13 @@ const LoginPage = () => {
             <h3>O projeto de rede social da Labenu</h3>
           </div>
         </ContainerLogo>
-        <Form>
-          <input type="email" placeholder='E-mail' />
-          <input type="password" placeholder='Senha' />
+        <Form onSubmit={onSubmitForm}>
+          <input type="email" name="email" placeholder='E-mail' />
+          <input type="password" name="password" placeholder='Senha' />
           <Button className='orange'>Continuar</Button>
         </Form>
         <hr />
-        <Button className='white'>Crie uma conta!</Button>
+        <Button className='white' type='submit'>Crie uma conta!</Button>
       </Container>
     </>
   )

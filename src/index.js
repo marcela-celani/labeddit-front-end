@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
 import { createGlobalStyle } from "styled-components";
 import ContextProvider from "./contexts/GlobalContext";
 import App from "./App";
+import Router from "./routes/Router";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -30,7 +30,9 @@ root.render(
   <ContextProvider>
     <React.StrictMode>
       <GlobalStyle />
-      <App />
+      <Router>
+        <App />
+      </Router>
     </React.StrictMode>
   </ContextProvider>
 );
