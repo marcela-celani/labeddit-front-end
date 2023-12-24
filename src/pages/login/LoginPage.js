@@ -1,19 +1,19 @@
-import React from 'react'
-import logo from '../../assets/logo.svg'
-import { Button, Container, ContainerLogo, Form } from './LoginStyle'
-import { useNavigate } from 'react-router-dom'
-import { goToFeed } from '../../routes/Coordinator'
+import React from "react";
+import logo from "../../assets/logo.svg";
+import { Button, Container, ContainerLogo, Form } from "./LoginStyle";
+import { useNavigate } from "react-router-dom";
+import { goToFeed, goToSignUp } from "../../routes/Coordinator";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
-  
-    const onSubmitForm = (e) => {
-        e.preventDefault()
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        goToFeed(navigate)
-    }
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    const loggedEmail = e.target.email.value;
+    const loggedPassword = e.target.password.value;
+    console.log(loggedEmail, loggedPassword);
+    goToFeed(navigate);
+  };
 
   return (
     <>
@@ -28,15 +28,17 @@ const LoginPage = () => {
           </div>
         </ContainerLogo>
         <Form onSubmit={onSubmitForm}>
-          <input type="email" name="email" placeholder='E-mail' />
-          <input type="password" name="password" placeholder='Senha' />
-          <Button className='orange'>Continuar</Button>
+          <input type="email" name="email" placeholder="E-mail" />
+          <input type="password" name="password" placeholder="Senha" />
+          <Button className="orange" type="submit">Continuar</Button>
         </Form>
         <hr />
-        <Button className='white' type='submit'>Crie uma conta!</Button>
+        <Button className="white" onClick={() => goToSignUp(navigate)}>
+          Crie uma conta!
+        </Button>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;
