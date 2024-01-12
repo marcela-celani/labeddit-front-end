@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from '../../components/header/Header'
 import { Button, Container, ContainerPosts, Form } from './FeedStyle'
-import PostCard from '../../components/postcard/PostCard'
+import { GlobalContext } from '../../contexts/GlobalContext'
 
 const FeedPage = () => {
+
+  const {arrayPosts} = useContext(GlobalContext)
+
   return (
     <>
       <Header />
@@ -14,9 +17,8 @@ const FeedPage = () => {
         </Form>
         <hr />
         <ContainerPosts>
-            <PostCard />
-            <PostCard />
-            <PostCard />
+          {arrayPosts()}
+
         </ContainerPosts>
       </Container>
     </>
