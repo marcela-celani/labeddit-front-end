@@ -16,7 +16,7 @@ const PostCard = ({posts, id}) => {
       <div onClick={()=> goToPost(navigate, id)}>
         <Container>
             <div>
-              <p>Enviado por: {posts.id}</p>
+              <p>Enviado por: {posts.creator_name}</p>
               <h3>{posts.content}</h3>
             </div>
           <ContainerLikes>
