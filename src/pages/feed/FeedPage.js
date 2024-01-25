@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Header from '../../components/header/Header'
 import { Button, Container, ContainerPosts, Form } from './FeedStyle'
-import { GlobalContext } from '../../contexts/GlobalContext'
+import { useProtectedPage } from '../../hooks/useProtectedPage'
 
 const FeedPage = () => {
 
-  const {arrayPosts} = useContext(GlobalContext)
+  useProtectedPage()
 
   return (
     <>
@@ -17,7 +17,6 @@ const FeedPage = () => {
         </Form>
         <hr />
         <ContainerPosts>
-          {arrayPosts()}
 
         </ContainerPosts>
       </Container>

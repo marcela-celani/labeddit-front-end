@@ -2,7 +2,6 @@ import React from 'react'
 import { Button, Container, ContainerLikes, Likes } from './CommentCardStyle'
 import arrowUp from '../../assets/arrow-up.svg'
 import arrowDown from '../../assets/arrow-down.svg'
-import comments from '../../assets/comments.svg'
 
 const CommentCard = ({comments}) => {
 

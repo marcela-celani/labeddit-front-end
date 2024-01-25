@@ -1,17 +1,16 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Header from '../../components/header/Header'
-import { GlobalContext } from '../../contexts/GlobalContext'
 import { Button, Form, Container, ContainerPosts } from '../comments/CommentsStyle'
 import PostCard from '../../components/postcard/PostCard'
 
 const CommentsPage = () => {
 
-  const {arrayComments} = useContext(GlobalContext)
+  // const {comments, posts} = useContext(GlobalContext)
 
   return (
     <div>
       <Header />
-      {/* <PostCard /> */}
+      <PostCard id = 'p001'/>
       <Container>
         <Form>
           <textarea placeholder='Escreva seu post...'></textarea>
@@ -19,7 +18,6 @@ const CommentsPage = () => {
         </Form>
         <hr />
         <ContainerPosts>
-          {arrayComments()}
         </ContainerPosts>
       </Container>
     </div>

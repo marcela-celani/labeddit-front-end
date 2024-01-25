@@ -3,11 +3,17 @@ import logo from "../../assets/logo.svg";
 import x from "../../assets/buttonX.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Container, XButton } from "./HeaderStyle";
-import { goToLogin } from "../../routes/Coordinator";
+import { goToFeed, goToLogin } from "../../routes/Coordinator";
+import { deleteStorageItem } from "../../utils/storageManager";
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const logout = () => {
+    deleteStorageItem("token")
+    goToLogin(navigate)
+} 
 
   return (
     <>
@@ -21,16 +27,16 @@ const Header = () => {
         </Container>
       ) : (
         <Container>
-          {location.pathname === "/posts" ? (
+          {location.pathname === "/" ? (
             
             <div></div>
           ) : (
-            <XButton onClick={()=> navigate(-1)}><img src={x} alt="logo" /></XButton>
+            <XButton onClick={()=> navigate(() => goToFeed(navigate))}><img src={x} alt="logo" /></XButton>
           )}
           <div>
             <img src={logo} alt="logo" />
           </div>
-          <Button onClick={() => goToLogin(navigate)}>Logout</Button>
+          <Button onClick={logout}>Logout</Button>
         </Container>
       )}
     </>

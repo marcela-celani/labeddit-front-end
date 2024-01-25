@@ -1,5 +1,5 @@
 export const goToLogin = (navigate) => {
-    navigate("/")
+    navigate("/login")
   }
   
   export const goToSignUp = (navigate) => {
@@ -7,7 +7,7 @@ export const goToLogin = (navigate) => {
   }
   
   export const goToFeed = (navigate) => {
-    navigate("/posts")
+    navigate("/")
   }
   
   export const goToPost = (navigate, id) => {

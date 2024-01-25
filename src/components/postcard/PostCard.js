@@ -11,9 +11,13 @@ const PostCard = ({posts, id}) => {
 
   const navigate = useNavigate();
 
+  const handleClick = (id) => {
+    goToPost(navigate, id)
+  }
+
   return (
     <>
-      <div onClick={()=> goToPost(navigate, id)}>
+      <div onClick={()=> handleClick(id)}>
         <Container>
             <div>
               <p>Enviado por: {posts.creator_name}</p>

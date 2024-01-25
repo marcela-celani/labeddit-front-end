@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createGlobalStyle } from "styled-components";
-import ContextProvider from "./contexts/GlobalContext";
+
 import App from "./App";
 import Router from "./routes/Router";
-
+import { GlobalState } from "./contexts/GlobalState";
 
 const GlobalStyle = createGlobalStyle`
   
@@ -22,16 +22,14 @@ const GlobalStyle = createGlobalStyle`
 
 `;
 
-
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ContextProvider>
-    <React.StrictMode>
+  <React.StrictMode>
+    <GlobalState>
       <GlobalStyle />
       <Router>
         <App />
       </Router>
-    </React.StrictMode>
-  </ContextProvider>
+    </GlobalState>
+  </React.StrictMode>
 );
