@@ -8,11 +8,10 @@ import { GlobalStateContext } from "./GlobalContext";
 
 
 export const GlobalState = ({ children }) => {
-    const [tela, setTela] = useState([])
     const [posts, setPosts, loading] = useRequestData(`${BASE_URL}/posts`, [])
 
     return (
-        <GlobalStateContext.Provider value={{tela, setTela, posts, setPosts, loading}} >
+        <GlobalStateContext.Provider value={{posts, setPosts, loading}} >
             {children}
         </GlobalStateContext.Provider>
     );
@@ -30,25 +29,7 @@ export const GlobalState = ({ children }) => {
 //     }, [])
 
     
-    // const signUp = async () => {
-    //     try {
-
-    //         const body = {
-    //             name,
-    //             email,
-    //             password
-    //         }
-
-
-    //         const resp = await axios.post('https://labeddit-back-end-susu.onrender.com/users/signup', body);
-    //         const postsData = resp.data;
-
-    //         setPosts(postsData.map(post => <PostCard posts={post} id={post.id} key={post.id} />));
     
-    //     } catch (error) {
-    //         console.log('erro', error);
-    //     }
-    // }
 
 
 //     const getPosts = async () => {
@@ -72,12 +53,3 @@ export const GlobalState = ({ children }) => {
 
 //         setComments(comments)
 //     };
-   
-//     return(
-//         <GlobalContext.Provider value={{tela, setTela, posts, comments}}>
-//             {children}
-//         </GlobalContext.Provider>
-//     )
-// }
-
-// export default ContextProvider;

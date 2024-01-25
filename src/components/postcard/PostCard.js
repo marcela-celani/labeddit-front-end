@@ -7,7 +7,7 @@ import { goToPost } from '../../routes/Coordinator'
 import { useNavigate } from 'react-router-dom'
 
 
-const PostCard = ({posts, id}) => {
+const PostCard = ({post, id}) => {
 
   const navigate = useNavigate();
 
@@ -20,18 +20,18 @@ const PostCard = ({posts, id}) => {
       <div onClick={()=> handleClick(id)}>
         <Container>
             <div>
-              <p>Enviado por: {posts.creator_name}</p>
-              <h3>{posts.content}</h3>
+              <p>Enviado por: {post.creator_name}</p>
+              <h3>{post.content}</h3>
             </div>
           <ContainerLikes>
             <div className='likes'>
               <Button><img src={arrowUp} alt="" /></Button>
-              <p>{posts.likes}</p>
+              <p>{post.likes}</p>
               <Button><img src={arrowDown} alt="" /></Button>
             </div>
             <div className='comments'>
               <Button><img src={comments} alt="" /></Button>
-              <p>{posts.comments}</p>
+              <p>{post.comments}</p>
             </div>
           </ContainerLikes>
         </Container>

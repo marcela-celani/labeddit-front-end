@@ -1,11 +1,34 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from '../../components/header/Header'
+import PostCard from '../../components/postcard/PostCard'
 import { Button, Container, ContainerPosts, Form } from './FeedStyle'
 import { useProtectedPage } from '../../hooks/useProtectedPage'
+import { GlobalStateContext } from '../../contexts/GlobalContext'
+import { useNavigate } from 'react-router-dom'
+import Loading from '../../components/loading/Loading'
 
 const FeedPage = () => {
 
   useProtectedPage()
+
+  const { posts, setPosts, loading } = useContext(GlobalStateContext)
+  const navigate = useNavigate()
+
+  if (loading) {
+    return <Loading />
+  }
+
+  const postsList = posts && posts.length ? posts.map((post) => {
+    return (
+      <PostCard
+        key={post.id}
+        id={post.id}
+        post={post}
+      />
+    )
+  })
+    :
+    <p>Não há receitas</p>
 
   return (
     <>
@@ -17,7 +40,7 @@ const FeedPage = () => {
         </Form>
         <hr />
         <ContainerPosts>
-
+            {postsList}
         </ContainerPosts>
       </Container>
     </>
