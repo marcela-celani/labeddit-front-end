@@ -6,10 +6,13 @@ import { useProtectedPage } from '../../hooks/useProtectedPage'
 import { GlobalStateContext } from '../../contexts/GlobalContext'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../components/loading/Loading'
+import { useRequestData } from '../../hooks/useRequestData'
+import { BASE_URL } from '../../constants/baseURL'
 
 const FeedPage = () => {
 
   useProtectedPage()
+  useRequestData(`${BASE_URL}/posts`, [])
 
   const { posts, setPosts, loading } = useContext(GlobalStateContext)
   const navigate = useNavigate()
@@ -20,15 +23,16 @@ const FeedPage = () => {
 
   const postsList = posts && posts.length ? posts.map((post) => {
     return (
-      <PostCard
-        key={post.id}
-        id={post.id}
-        post={post}
-      />
+        <PostCard
+          key={post.id}
+          post={post}
+          navigate={navigate}
+        />
+
     )
   })
     :
-    <p>Não há receitas</p>
+    <p>Nenhuma postagem disponível para visualização</p>
 
   return (
     <>

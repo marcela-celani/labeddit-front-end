@@ -11,7 +11,8 @@ export const goToLogin = (navigate) => {
   }
   
   export const goToPost = (navigate, id) => {
-    navigate(`/posts/${id}`)
+    const post_id = id
+    navigate(`/posts/${post_id}/comments`)
   }
   
   export const goToError = (navigate) => {

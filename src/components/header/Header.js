@@ -31,7 +31,7 @@ const Header = () => {
             
             <div></div>
           ) : (
-            <XButton onClick={()=> navigate(() => goToFeed(navigate))}><img src={x} alt="logo" /></XButton>
+            <XButton onClick={()=> goToFeed(navigate)}><img src={x} alt="logo" /></XButton>
           )}
           <div>
             <img src={logo} alt="logo" />

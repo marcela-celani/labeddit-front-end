@@ -1,37 +1,38 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Container, ContainerLikes, Likes } from './PostCardStyle'
 import arrowUp from '../../assets/arrow-up.svg'
 import arrowDown from '../../assets/arrow-down.svg'
 import comments from '../../assets/comments.svg'
 import { goToPost } from '../../routes/Coordinator'
 import { useNavigate } from 'react-router-dom'
+import { GlobalStateContext } from '../../contexts/GlobalContext'
 
 
-const PostCard = ({post, id}) => {
+const PostCard = ({post, navigate}) => {
 
-  const navigate = useNavigate();
+  const {id, content, comments, creator, dislikes, likes} = post
 
-  const handleClick = (id) => {
+  const handleclick = (id) => {
     goToPost(navigate, id)
   }
 
   return (
     <>
-      <div onClick={()=> handleClick(id)}>
+      <div onClick={()=> handleclick(id)}>
         <Container>
             <div>
-              <p>Enviado por: {post.creator_name}</p>
-              <h3>{post.content}</h3>
+              {/* <p>Enviado por: {creator.name}</p> */}
+              <h3>{content}</h3>
             </div>
           <ContainerLikes>
             <div className='likes'>
               <Button><img src={arrowUp} alt="" /></Button>
-              <p>{post.likes}</p>
+              <p>{likes - dislikes}</p>
               <Button><img src={arrowDown} alt="" /></Button>
             </div>
             <div className='comments'>
               <Button><img src={comments} alt="" /></Button>
-              <p>{post.comments}</p>
+              <p>{comments}</p>
             </div>
           </ContainerLikes>
         </Container>
