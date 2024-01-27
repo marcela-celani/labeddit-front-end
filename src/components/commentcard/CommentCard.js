@@ -5,8 +5,7 @@ import arrowDown from '../../assets/arrow-down.svg'
 
 const CommentCard = ({comment}) => {
 
-  const {id, content, creator, dislikes, likes} = comment
-  console.log(comment)
+  const {content, creator, dislikes, likes} = comment
 
   return (
     <>

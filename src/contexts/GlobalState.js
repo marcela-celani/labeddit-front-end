@@ -7,9 +7,46 @@ import { getHeaders } from "../utils/storageManager";
 
 
 export const GlobalState = ({ children }) => {
-    const [posts, setPosts, loading] = useRequestData(`${BASE_URL}/posts`, [])
+    const [posts, setPosts] = useRequestData(`${BASE_URL}/posts`, [])
+    const [loading, setLoading] = useState(false)
 
-    const [data, setData] = useState('')
+    const newPost = async (form) => {
+        const url = `${BASE_URL}/posts/`
+        const body = {
+            content: form.textarea
+        }
+
+        axios.post(url, body, getHeaders())
+
+        .then((res) => {
+            alert("Novo post realizado com sucesso!")
+        })
+        .catch((err) => {
+          console.log(err.response)
+          alert("Erro inesperado, tente novamente")
+        })
+        .finally(() => { setLoading(false) })
+    }
+
+    const newComment = async (form, post_id) => {
+        const url = `${BASE_URL}/posts/${post_id}/comments`
+        const body = {
+            content: form.textarea
+        }
+
+        axios.post(url, body, getHeaders())
+
+        .then((res) => {
+            console.log(res)
+            alert("Novo comentário realizado com sucesso!")
+        })
+        .catch((err) => {
+          console.log(err.response)
+          alert("Erro inesperado, tente novamente")
+        })
+        .finally(() => { setLoading(false) })
+    }
+    
 
     const likePost = async (post_id) => {
         const url = `${BASE_URL}/posts/${post_id}/like`
@@ -49,7 +86,7 @@ export const GlobalState = ({ children }) => {
     
 
     return (
-        <GlobalStateContext.Provider value={{posts, setPosts, loading, likePost, dislikePost, likeComment, dislikeComment}} >
+        <GlobalStateContext.Provider value={{posts, setPosts, loading, setLoading, likePost, dislikePost, likeComment, dislikeComment, newPost, newComment}} >
             {children}
         </GlobalStateContext.Provider>
     );

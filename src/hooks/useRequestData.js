@@ -22,5 +22,5 @@ export const useRequestData = (url, initialState) => {
         apiCall()
     }, [url])
 
-    return [data, setData, loading]
+    return [data, setData]
 }

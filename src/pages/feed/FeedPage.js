@@ -1,57 +1,69 @@
-import React, { useContext } from 'react'
-import Header from '../../components/header/Header'
-import PostCard from '../../components/postcard/PostCard'
-import { Button, Container, ContainerPosts, Form } from './FeedStyle'
-import { useProtectedPage } from '../../hooks/useProtectedPage'
-import { GlobalStateContext } from '../../contexts/GlobalContext'
-import { useNavigate } from 'react-router-dom'
-import Loading from '../../components/loading/Loading'
-import { useRequestData } from '../../hooks/useRequestData'
-import { BASE_URL } from '../../constants/baseURL'
+import React, { useContext } from 'react';
+import Header from '../../components/header/Header';
+import PostCard from '../../components/postcard/PostCard';
+import { Button, Container, ContainerPosts, Form } from './FeedStyle';
+import { useProtectedPage } from '../../hooks/useProtectedPage';
+import { GlobalStateContext } from '../../contexts/GlobalContext';
+import { useNavigate } from 'react-router-dom';
+import Loading from '../../components/loading/Loading';
+import { useForm } from '../../hooks/useForm';
+
 
 const FeedPage = () => {
+  useProtectedPage();
+  const navigate = useNavigate();
+  const { posts, loading, setLoading, likePost, dislikePost, newPost } = useContext(GlobalStateContext);
 
-  useProtectedPage()
-  useRequestData(`${BASE_URL}/posts`, [])
+  const [form, onChange] = useForm({
+    textarea: ''
+  });
 
-  const { posts, loading, likePost, dislikePost } = useContext(GlobalStateContext)
-
-  const navigate = useNavigate()
+  const postField = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      await newPost(form);
+    } catch (error) {
+      console.error('Error creating new post:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
-  const postsList = posts && posts.length ? posts.map((post) => {
-    return (
-        <PostCard
-          key={post.id}
-          post={post}
-          navigate={navigate}
-          likePost = {likePost}
-          dislikePost = {dislikePost}
-        />
-
-    )
-  })
-    :
-    <p>Nenhuma postagem disponível para visualização</p>
+  const postsList = posts && posts.length ? posts.map((post) => (
+    <PostCard
+      key={post.id}
+      post={post}
+      navigate={navigate}
+      likePost={likePost}
+      dislikePost={dislikePost}
+    />
+  )) : <p>Nenhuma postagem disponível para visualização</p>;
 
   return (
     <>
       <Header />
       <Container>
-        <Form>
-          <textarea placeholder='Escreva seu post...'></textarea>
+        <Form onSubmit={postField}>
+          <textarea
+            placeholder='Escreva seu post...'
+            name="textarea"
+            value={form.textarea}
+            onChange={onChange}
+          ></textarea>
           <Button>Postar</Button>
         </Form>
         <hr />
         <ContainerPosts>
-            {postsList}
+          {postsList}
         </ContainerPosts>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default FeedPage
+export default FeedPage;

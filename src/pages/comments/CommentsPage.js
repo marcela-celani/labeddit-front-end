@@ -15,10 +15,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { GlobalStateContext } from "../../contexts/GlobalContext";
 import Loading from "../../components/loading/Loading";
 import ErrorPage from '../error/ErrorPage'
+import { useForm } from "../../hooks/useForm";
 
 const CommentsPage = () => {
   useProtectedPage();
   const navigate = useNavigate();
+  const [form, onChange] = useForm({
+    textarea: ''
+  });
 
   const { post_id } = useParams();
   const comments = useRequestData(
@@ -26,7 +30,23 @@ const CommentsPage = () => {
     []
   )[0];
 
-  const { posts, loading, likeComment, dislikeComment } = useContext(GlobalStateContext);
+  const { posts, loading, setLoading, likeComment, dislikeComment, newComment, likePost, dislikePost } = useContext(GlobalStateContext);
+
+  const postField = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      await newComment(form, post_id);
+    } catch (error) {
+      console.error('Error creating new post:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   if (loading || posts.length === 0) {
     return <Loading />;
@@ -55,17 +75,26 @@ const CommentsPage = () => {
       <p>Essa postagem não possui comentários ainda</p>
     );
 
-  console.log(commentslist);
-
   return (
     <div>
       <Header />
       <Container>
       <ContainerPosts>
-        <PostCard key={post.id} post={post} navigate={navigate} />
+        <PostCard 
+         key={post.id}
+         post={post}
+         navigate={navigate}
+         likePost={likePost}
+         dislikePost={dislikePost}
+         />
       </ContainerPosts>
-        <Form>
-          <textarea placeholder="Escreva seu post..."></textarea>
+        <Form onSubmit={postField}>
+          <textarea 
+          placeholder="Escreva seu comentário..."
+          name="textarea"
+          value={form.textarea}
+          onChange={onChange}
+          ></textarea>
           <Button>Responder</Button>
         </Form>
         <hr />
