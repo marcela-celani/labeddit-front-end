@@ -60,4 +60,20 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .arrow-up-icon, .arrow-down-icon, .comments-icon {
+  fill: #6F6F6F; 
+  }
+
+  .arrow-up-icon:hover {
+  fill: green; 
+  }
+
+  .arrow-down-icon:hover {
+  fill: red; 
+  }
+
+  .comments-icon:hover {
+    fill: orange;
+  }
 `;

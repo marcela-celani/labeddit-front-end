@@ -20,6 +20,10 @@ const FeedPage = () => {
 
   const postField = async (e) => {
     e.preventDefault();
+    if (Object.values(form).some(value => value === '')) {
+      alert("Por favor, preencha o campo de texto da sua postagem");
+      return; 
+    }
     try {
       setLoading(true);
       await newPost(form);

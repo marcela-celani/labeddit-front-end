@@ -73,6 +73,12 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  cursor: pointer;
+
+&:hover {
+  transform: scale(1.05); /* Ajuste o valor conforme necessário para o efeito desejado */
+  transition: transform 0.3s ease; /* Adicione uma transição para suavizar o efeito */
+}
 
   &.orange {
     border-radius: 27px;

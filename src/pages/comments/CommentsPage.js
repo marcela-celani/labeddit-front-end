@@ -34,6 +34,11 @@ const CommentsPage = () => {
 
   const postField = async (e) => {
     e.preventDefault();
+    if (Object.values(form).some(value => value === '')) {
+      alert("Por favor, preencha o campo de texto do seu comentário");
+      return; 
+    }
+
     try {
       setLoading(true);
       await newComment(form, post_id);

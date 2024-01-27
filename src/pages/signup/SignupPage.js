@@ -27,7 +27,11 @@ const SignupPage = () => {
 
   const signup = (e) => {
     e.preventDefault();
-    console.log(form)
+    if (Object.values(form).some(value => value === '')) {
+      alert("Por favor, preencha todos os campos do formulário de cadastro");
+      return; 
+    }
+    
     setLoading(true)
 
     axios.post(`${BASE_URL}/users/signup`, form)

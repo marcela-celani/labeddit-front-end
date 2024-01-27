@@ -74,6 +74,7 @@ export const Form = styled.form`
     font-weight: 400;
     line-height: normal;
   }
+  
 `;
 
 export const Button = styled.button`
@@ -93,4 +94,10 @@ export const Button = styled.button`
   color: white;
   border: none;
   margin-top: 12px;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05); /* Ajuste o valor conforme necessário para o efeito desejado */
+    transition: transform 0.3s ease; /* Adicione uma transição para suavizar o efeito */
+  }
 `;

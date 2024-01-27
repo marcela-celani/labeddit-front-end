@@ -1,7 +1,8 @@
 import React from 'react'
-import { Button, Container, ContainerLikes, Likes } from './CommentCardStyle'
+import { Button, Container, ContainerLikes } from './CommentCardStyle'
 import arrowUp from '../../assets/arrow-up.svg'
 import arrowDown from '../../assets/arrow-down.svg'
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 
 const CommentCard = ({comment}) => {
 
@@ -17,9 +18,9 @@ const CommentCard = ({comment}) => {
             </div>
           <ContainerLikes>
             <div className='likes'>
-              <Button><img src={arrowUp} alt="" /></Button>
+              <Button><FaArrowUp className="arrow-up-icon" /></Button>
               <p>{likes - dislikes }</p>
-              <Button><img src={arrowDown} alt="" /></Button>
+              <Button> <FaArrowDown className="arrow-down-icon" /></Button>
             </div>
           </ContainerLikes>
         </Container>

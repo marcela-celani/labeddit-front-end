@@ -22,6 +22,10 @@ const LoginPage = () => {
 
   const login = (e) => {
     e.preventDefault();
+    if (Object.values(form).some(value => value === '')) {
+      alert("Por favor, preencha todos os campos do formulário de login");
+      return; 
+    }
     setLoading(true)
     axios.post(`${BASE_URL}/users/login`, form)
       .then((res) => {

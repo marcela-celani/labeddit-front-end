@@ -23,7 +23,12 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  border: none;
+  border: none;  
+  cursor: pointer;
+
+  &:hover {
+    color: orange;
+  }
 `;
 
 export const XButton = styled.button`
@@ -32,4 +37,8 @@ export const XButton = styled.button`
     width: 23px;
     height: 23px;
   }
+
+  cursor: pointer;
+
+
 `;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BASE_URL } from "../constants/baseURL";
 import { useRequestData } from "../hooks/useRequestData";
 import { GlobalStateContext } from "./GlobalContext";
@@ -10,6 +10,10 @@ export const GlobalState = ({ children }) => {
     const [posts, setPosts] = useRequestData(`${BASE_URL}/posts`, [])
     const [loading, setLoading] = useState(false)
 
+    const render = async () =>  {
+        await axios.get(`${BASE_URL}/posts/`, getHeaders())
+    }
+
     const newPost = async (form) => {
         const url = `${BASE_URL}/posts/`
         const body = {
@@ -20,6 +24,7 @@ export const GlobalState = ({ children }) => {
 
         .then((res) => {
             alert("Novo post realizado com sucesso!")
+            setPosts(render)
         })
         .catch((err) => {
           console.log(err.response)
