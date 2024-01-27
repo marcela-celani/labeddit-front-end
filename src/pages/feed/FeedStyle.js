@@ -20,6 +20,7 @@ export const Container = styled.div`
 export const ContainerPosts = styled.div`
   display: flex;
   flex-direction: column;
+  width: 364px;
   align-items: top;
   text-align: start;
   row-gap: 10px;

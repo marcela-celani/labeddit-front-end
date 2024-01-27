@@ -19,6 +19,7 @@ export const Container = styled.div`
 
 export const ContainerPosts = styled.div`
   display: flex;
+  width: 364px;
   flex-direction: column;
   align-items: top;
   text-align: start;
@@ -41,6 +42,7 @@ export const ContainerPosts = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  margin-top: 12px;
 
   textarea {
     width: 364px;

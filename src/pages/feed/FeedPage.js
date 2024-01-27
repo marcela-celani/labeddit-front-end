@@ -14,7 +14,8 @@ const FeedPage = () => {
   useProtectedPage()
   useRequestData(`${BASE_URL}/posts`, [])
 
-  const { posts, setPosts, loading } = useContext(GlobalStateContext)
+  const { posts, loading, likePost, dislikePost } = useContext(GlobalStateContext)
+
   const navigate = useNavigate()
 
   if (loading) {
@@ -27,6 +28,8 @@ const FeedPage = () => {
           key={post.id}
           post={post}
           navigate={navigate}
+          likePost = {likePost}
+          dislikePost = {dislikePost}
         />
 
     )
