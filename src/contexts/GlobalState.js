@@ -7,12 +7,11 @@ import { getHeaders } from "../utils/storageManager";
 
 
 export const GlobalState = ({ children }) => {
-    const [posts, setPosts] = useRequestData(`${BASE_URL}/posts`, [])
+    const [posts, setPosts] = useState([])
+    const [comments, setComments] = useState([])
     const [loading, setLoading] = useState(false)
 
-    const render = async () =>  {
-        await axios.get(`${BASE_URL}/posts/`, getHeaders())
-    }
+
 
     const newPost = async (form) => {
         const url = `${BASE_URL}/posts/`
@@ -24,7 +23,7 @@ export const GlobalState = ({ children }) => {
 
         .then((res) => {
             alert("Novo post realizado com sucesso!")
-            setPosts(render)
+            setPosts(res.data)
         })
         .catch((err) => {
           console.log(err.response)
@@ -91,7 +90,7 @@ export const GlobalState = ({ children }) => {
     
 
     return (
-        <GlobalStateContext.Provider value={{posts, setPosts, loading, setLoading, likePost, dislikePost, likeComment, dislikeComment, newPost, newComment}} >
+        <GlobalStateContext.Provider value={{comments, setComments,  posts, setPosts, loading, setLoading, likePost, dislikePost, likeComment, dislikeComment, newPost, newComment}} >
             {children}
         </GlobalStateContext.Provider>
     );
