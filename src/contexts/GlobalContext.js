@@ -1,16 +1,4 @@
-import { createContext, useState } from "react";
-import axios from 'axios'
+import { createContext } from 'react';
 
-export const GlobalContext = createContext()
+export const GlobalStateContext = createContext();
 
-const ContextProvider = ({ children }) => {
-    const [tela, setTela] = useState([])
-   
-    return(
-        <GlobalContext.Provider value={{tela, setTela}}>
-            {children}
-        </GlobalContext.Provider>
-    )
-}
-
-export default ContextProvider;
