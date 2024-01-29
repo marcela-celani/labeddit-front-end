@@ -60,6 +60,7 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   .arrow-up-icon, .arrow-down-icon, .comments-icon {
   fill: #6F6F6F; 
