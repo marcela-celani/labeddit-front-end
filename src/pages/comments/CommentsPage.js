@@ -13,7 +13,7 @@ import { BASE_URL } from "../../constants/baseURL";
 import { useNavigate, useParams } from "react-router-dom";
 import { GlobalStateContext } from "../../contexts/GlobalContext";
 import Loading from "../../components/loading/Loading";
-import ErrorPage from '../error/ErrorPage'
+import ErrorPage from "../error/ErrorPage";
 import { useForm } from "../../hooks/useForm";
 import axios from "axios";
 import { getHeaders } from "../../utils/storageManager";
@@ -22,17 +22,29 @@ const CommentsPage = () => {
   useProtectedPage();
   const navigate = useNavigate();
   const [form, onChange] = useForm({
-    textarea: ''
+    textarea: "",
   });
 
   const { post_id } = useParams();
-  const { comments, setComments, posts, loading, setLoading, likeComment, dislikeComment, newComment, likePost, dislikePost } = useContext(GlobalStateContext);
+  const {
+    comments,
+    setComments,
+    posts,
+    getPosts,
+    loading,
+    setLoading,
+    likeComment,
+    dislikeComment,
+    newComment,
+    likePost,
+    dislikePost,
+  } = useContext(GlobalStateContext);
 
   const getComments = async () => {
     await axios
       .get(`${BASE_URL}/posts/${post_id}/comments`, getHeaders())
       .then((res) => {
-        setComments(res.data)
+        setComments(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -40,36 +52,32 @@ const CommentsPage = () => {
   };
 
   useEffect(() => {
+    getPosts();
     getComments();
-  });
+  }, [posts]);
 
   const postField = async (e) => {
     e.preventDefault();
-    if (Object.values(form).some(value => value === '')) {
+    if (Object.values(form).some((value) => value === "")) {
       alert("Por favor, preencha o campo de texto do seu comentário");
-      return; 
+      return;
     }
 
     try {
       setLoading(true);
       await newComment(form, post_id);
     } catch (error) {
-      console.error('Error creating new post:', error);
+      console.error("Error creating new post:", error);
     } finally {
       setLoading(false);
     }
   };
-
-  if (loading) {
-    return <Loading />;
-  }
 
   if (loading || posts.length === 0) {
     return <Loading />;
   }
 
   const post = posts.find((post) => post.id === post_id);
-
   if (!post) {
     return <ErrorPage />;
   }
@@ -78,13 +86,14 @@ const CommentsPage = () => {
     comments && comments.length ? (
       comments.map((comment) => {
         return (
-          <CommentCard 
-          key={comment.id} 
-          comment={comment} 
-          navigate={navigate}
-          likeComment = {likeComment}
-          dislikeComment = {dislikeComment}
-           />
+          <CommentCard
+            key={comment.id}
+            comment={comment}
+            navigate={navigate}
+            likeComment={likeComment}
+            dislikeComment={dislikeComment}
+            post_id={post_id}
+          />
         );
       })
     ) : (
@@ -95,21 +104,21 @@ const CommentsPage = () => {
     <div>
       <Header />
       <Container>
-      <ContainerPosts>
-        <PostCard 
-         key={post.id}
-         post={post}
-         navigate={navigate}
-         likePost={likePost}
-         dislikePost={dislikePost}
-         />
-      </ContainerPosts>
+        <ContainerPosts>
+          <PostCard
+            key={post.id}
+            post={post}
+            navigate={navigate}
+            likePost={likePost}
+            dislikePost={dislikePost}
+          />
+        </ContainerPosts>
         <Form onSubmit={postField}>
-          <textarea 
-          placeholder="Escreva seu comentário..."
-          name="textarea"
-          value={form.textarea}
-          onChange={onChange}
+          <textarea
+            placeholder="Escreva seu comentário..."
+            name="textarea"
+            value={form.textarea}
+            onChange={onChange}
           ></textarea>
           <Button>Responder</Button>
         </Form>

@@ -7,9 +7,6 @@ import { GlobalStateContext } from "../../contexts/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../components/loading/Loading";
 import { useForm } from "../../hooks/useForm";
-import axios from "axios";
-import { BASE_URL } from "../../constants/baseURL";
-import { getHeaders } from "../../utils/storageManager";
 
 const FeedPage = () => {
   useProtectedPage();
@@ -17,6 +14,7 @@ const FeedPage = () => {
   const {
     posts,
     setPosts,
+    getPosts,
     loading,
     setLoading,
     likePost,
@@ -27,17 +25,6 @@ const FeedPage = () => {
   const [form, onChange] = useForm({
     textarea: "",
   });
-
-  const getPosts = async () => {
-    await axios
-      .get(`${BASE_URL}/posts`, getHeaders())
-      .then((res) => {
-        setPosts(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   useEffect(() => {
     getPosts();
