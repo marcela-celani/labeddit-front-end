@@ -3,14 +3,16 @@
 📝 Descrição do Projeto
 Este é o projeto final do meu curso de Desenvolvimento Web FullStack, onde foram aplicados os conhecimentos adquiridos em back-end e front-end. O design do aplicativo segue o conceito Mobile First, priorizando o desenvolvimento para dispositivos móveis e adaptando-o para telas maiores, como tablets ou desktops.
 
-O projeto consiste em criar uma aplicação web, utilizando ReactJS no front-end e uma API no back-end. As funcionalidades devem respeitar o layout definido no Figma, como requisito de projeto, garantindo uma experiência consistente para o usuário. O objetivo final é criar uma aplicação deployável e documentada.
+O projeto consiste em criar uma aplicação web, utilizando ReactJS no front-end e uma API no back-end. As funcionalidades devem respeitar o layout definido no [Figma](https://www.figma.com/file/Byakv89sjTqI6NG2NRAAKJ/Projeto-Integrador-Labeddit?node-id=0%3A1&t=haX9j5M0lHbjWnAr-0), como requisito de projeto, garantindo uma experiência consistente para o usuário. O objetivo final é criar uma aplicação deployável e documentada.
 
 Repositórios
 Para facilitar o processo de deploy, os códigos foram divididos em repositórios separados para o front-end e back-end. Certifique-se de clonar ambos os repositórios para ter o projeto completo.
 
-[Repositório do Front-end](https://github.com/marcela-celani/labeddit-front-end)
-[Repositório do Back-end](https://github.com/marcela-celani/labeddit-back-end)
+[Repositório do Front-end]
+(https://github.com/marcela-celani/labeddit-front-end)
 
+[Repositório do Back-end]
+(https://github.com/marcela-celani/labeddit-back-end)
 
 ## Informação Geral
 
@@ -71,12 +73,13 @@ git clone https://github.com/marcela-celani/labeddit-front-end.git
 ```
 2. Instale as dependências:
 ```
-cd labeddit-front-end
 npm install
 ```
-
-3. Inicie a aplicação localmente em http://localhost:3000 para ver em seu navegador:
+```
+cd labeddit-front-end
+```
+3. Inicie a aplicação localmente para ver em seu navegador:
 ```
 npm start
 ```
-4. Ou acesse diretamente utilizando este: 🔗[Link do Deploy do Front End]([https://marcela-celani.github.io/projeto-react-apis/](https://labeddit-front-gzrqi60sj-marcela-celani.vercel.app/login)https://labeddit-front-gzrqi60sj-marcela-celani.vercel.app/login)
+4. Ou acesse diretamente utilizando este: 🔗[Link do Deploy do Front End](https://labeddit-front-gzrqi60sj-marcela-celani.vercel.app/login)
