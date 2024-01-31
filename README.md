@@ -3,7 +3,7 @@
 📝 Descrição do Projeto
 Este é o projeto final do meu curso de Desenvolvimento Web FullStack, onde foram aplicados os conhecimentos adquiridos em back-end e front-end. O design do aplicativo segue o conceito Mobile First, priorizando o desenvolvimento para dispositivos móveis e adaptando-o para telas maiores, como tablets ou desktops.
 
-O projeto consiste em criar uma aplicação web, utilizando ReactJS no front-end e uma API no back-end. As funcionalidades devem respeitar o layout definido no [Figma](https://www.figma.com/file/Byakv89sjTqI6NG2NRAAKJ/Projeto-Integrador-Labeddit?node-id=0%3A1&t=haX9j5M0lHbjWnAr-0), como requisito de projeto, garantindo uma experiência consistente para o usuário. O objetivo final é criar uma aplicação deployável e documentada.
+O projeto consiste em criar uma aplicação web, utilizando ReactJS no front-end e uma API no back-end. No front, as funcionalidades devem respeitar o layout definido no [Figma](https://www.figma.com/file/Byakv89sjTqI6NG2NRAAKJ/Projeto-Integrador-Labeddit?node-id=0%3A1&t=haX9j5M0lHbjWnAr-0) e consumir a API criada no back, como requisito de projeto, garantindo uma experiência consistente para o usuário. No back, as requisições devem se conectar com o banco de dados para realizar essas funcionalidades, fazendo verificações e validações, além de testes unitários. O objetivo final é criar uma aplicação FullStack deployável e em funcionamento.
 
 Repositórios
 Para facilitar o processo de deploy, os códigos foram divididos em repositórios separados para o front-end e back-end. Certifique-se de clonar ambos os repositórios para ter o projeto completo.
