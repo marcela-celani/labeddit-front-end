@@ -69,15 +69,18 @@ Este projeto possui 4 telas (páginas) interativas:
 ```
 git clone https://github.com/marcela-celani/labeddit-front-end.git
 ```
+
 2. Instale as dependências:
-```
-npm install
-```
 ```
 cd labeddit-front-end
 ```
+```
+npm install
+```
+
 3. Inicie a aplicação localmente para ver em seu navegador:
 ```
 npm start
 ```
+
 4. Ou acesse diretamente utilizando este: 🔗[Link do Deploy do Front End](https://labeddit-front-gzrqi60sj-marcela-celani.vercel.app/login)
